@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+      <meta charset="utf-8">
+      <title>Financial Stocks</title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"> -->
+
+      <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Permanent+Marker">
+      <link href="https://fonts.googleapis.com/css?family=Quicksand" rel="stylesheet">
+      <link href="https://fonts.googleapis.com/css?family=Shadows+Into+Light" rel="stylesheet">
+      <style >
+        @import url('https://fonts.googleapis.com/css?family=Syncopate');
+        @import url('https://fonts.googleapis.com/css?family=Poiret+One');
+        /* @import url('https://fonts.googleapis.com/css?family=Shadows+Into+Light'); */
+      </style>
+
+      <!-- <link rel="stylesheet" type="text/css" href="css/main.css"> -->
+      <link rel="stylesheet" type="text/css" href="css/stocks.css">
+      <link rel="stylesheet" type="text/css" href="css/loader.css">
+
+ </head>
+ <body>
+     <header>
+         <h1 id="primary-content">Financial Stock Performances</h1>
+     </header>
+     <!-- <div id="body-main-page"> -->
+     <main>
+
+
+          <form id="stock-tasks" name="toDo">
+            <div class="company-stock-info">
+                <h2 id="company-ticker"></h2>
+                <p id="activity-date"></p>
+            </div>
+            <div class="company-info">
+              <h2 id="company-name"></h2>
+            </div>
+            <div class="stock-market-chart-display">
+                <div class="stock-selector">
+                    <div id="stock-search-box" class="search-stock-ticker">
+                      <input class="form-control stock-ticker-input"
+                      type="text" name="stock-symbol" id="stock-ticker" placeholder="Enter Stock Ticker">
+                        <input type="submit" value="Stock Search" id="stockSearch">
+                    </div>
+                    <!-- <input class="form-control stock-ticker-input"
+                    type="text" name="stock-symbol" id="stock-ticker" placeholder="Enter Stock Ticker"> -->
+                    <!-- <input type="submit" value="Search Stock" class="btn"> -->
+                    <!-- <input type="submit" value="Search Ticker" id="stockSearch"> -->
+                    <div id="historyical-data" class="historical-data-group">
+                      <button type="button" name="button" id="BtnOneDay" class="btn" title="1 Day Stock Performance">1D</button>
+                      <button type="button" name="button" id="BtnFiveDays" class="btn" title="5 Days Stock Performance">5D</button>
+                      <button type="button" name="button" id="BtnOneMonth" class="btn" title="1 Month Stock Performance">1M</button>
+                      <button type="button" name="button" id="BtnFiveMonths" class="btn" title="5 Months Stock Performance">5M</button>
+                      <button type="button" name="button" id="BtnYTD" class="btn" title="Year to Date Stock Performance">YTD</button>
+                      <button type="button" name="button" id="BtnOneYear" class="btn" title="1 Year Stock Performance">1Y</button>
+                      <button type="button" name="button" id="BtnFiveYears" class="btn" title="5 Years Stock Performance">5Y</button>
+                    </div>
+                </div>
+
+                <div id="chart_div" class="stock-chart1">
+                </div>
+            </div>
+        </form>
+
+    </main>
+    <!-- </div> -->
+
+    <!-- <div id="body-page-footer">
+        <p>Page layout design and javscript code by asmerom.</p>
+        <p>Copyright &#169; 2018, All rights reserved.</p>
+    </div> -->
+
+    <footer>
+        <p class="page-design">Page layout design and javscript code by asmerom.</p>
+        <p>Copyright &#169; 2018, All rights reserved.</p>
+    </footer>
+
+    <script src="js/jquery-1.11.3.min.js"></script>
+    <!-- <script type="text/javascript" src="js/moment-with-locales.min.js"></script> -->
+    <script src="https://www.gstatic.com/charts/loader.js"></script>
+    <script src="js/stocks.js"></script>
+    <script src="js/loader.js"></script>
+
+  </body>
+</html>

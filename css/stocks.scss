@@ -1,0 +1,221 @@
+@import "normalize.css";
+// @import "main";
+@import "variables";
+
+html {
+  font: normal normal 16px/1.2 Helvetica, sans-serif; // 1.2 is line-height
+}
+
+body {
+   background-color: $body-white;
+   position:relative;
+   // line-height: 1.5;
+   margin: 0 auto;
+   // background: $body-bgnd;
+}
+
+
+
+header {
+   border-bottom: 0.06rem dashed lightblue;
+   margin-bottom: .11rem;
+ }
+
+
+main {
+  margin: $main-margin;
+  width: $main-width;
+
+  border-right: 0.05rem dashed lightgray;
+  border-left: 0.05rem dashed lightgray;
+
+  display:flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+}
+
+
+footer {
+  margin-top: 1rem;
+  // font-family: Quicksand;
+  // font-size: 0.7rem;
+  // font-weight: 100;
+  font: 100 normal .7rem Quicksand sans-serif;
+  text-align: center;
+
+  border-top: 0.06rem dashed lightblue;
+
+  .page-design {
+    font-size: .7rem;
+    line-height: .7rem;
+  }
+}
+
+h2 {
+  font: $h2-font;
+  color: $black;
+
+  line-height: 1rem;
+
+  padding: 0 0;
+}
+
+
+p {
+  font: bold normal 1rem Quicksand, sans-serif;
+  color: #584;
+
+  line-height: 1rem;
+
+  padding: 0 0;
+}
+
+form {
+    width: $form-width;
+    margin: 0 0 1rem;
+
+    border: .05rem #84a solid;
+    border-radius: .2rem;
+
+    position: relative;
+    display:flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+
+
+input[type="submit"] {
+    padding: .4rem;
+    width: 9rem;
+
+    font-size: 1.0rem;
+    color: white;
+
+    background-color: $button-bgnd-color;
+
+    border: 1px solid $button-bgnd-color;
+    border-radius: .3rem;
+}
+
+
+.btn {
+  height: $historic-data-button-dimension;
+  width: $historic-data-button-dimension;
+  margin: 0 auto;
+
+  padding: 0 0;
+
+  font-size: 80%;
+  color: black;
+
+  border-radius: .3rem;
+
+  transition: all 2s ease;
+
+  // &.focus,
+  // .pressed {
+  //   background: $button-active-bgnd;
+  //   transform: scale(1.2) rotate(360deg);
+  // }
+}
+
+
+.pressed {
+  background: #e5daa2;
+  transform: scale(1.2) rotate(360deg);
+}
+
+
+#primary-content {
+   font: bold normal 5rem Poiret One, Quicksand, sans-serif;
+   color: #aaa584;
+   text-align: center;
+
+   &::first-letter {
+     font-size: 6rem;
+   }
+ }
+
+
+
+.company-info {
+  width: 70%;
+  height: $chart-header-height;
+
+  padding-left: 5rem;
+  line-height: 1rem;
+
+  align-items: flex-end;
+  align-content: flex-end;
+
+  h2 {
+    font: 900 normal 2rem Quicksand, sans-serif;
+    color: blue;
+  }
+}
+
+
+
+.company-stock-info {
+    width: 20%;
+    height: $chart-header-height;
+
+    padding-left: 1.2rem;
+
+    line-height: 1rem;
+
+    border-right: .1rem solid lightgray;
+}
+
+.stock-market-chart-display {
+    width: $full-width;
+    height: 29.3rem;
+
+    margin-top: 1rem;
+
+    border: .05rem #84a solid;
+    border-radius: .2rem;
+}
+
+
+.stock-ticker-input {
+    width: 8rem;
+    height: 1.8rem;
+
+    padding: 0  .4rem;
+
+    border: 0.09rem lightgray solid;
+    border-radius: .25rem;
+
+    text-align: left;
+}
+
+.stock-selector {
+    width: 55%;
+
+    padding: 1rem 0 .4rem ;
+
+    position: relative;
+    display:flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+.search-stock-ticker {
+    width: $full-width;
+
+    margin: $margin-stock-ticker;
+}
+
+
+.historical-data-group {
+    width: $full-width;
+    height: 2rem;
+
+    margin: $margin-stock-ticker;
+}

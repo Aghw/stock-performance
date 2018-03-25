@@ -23,7 +23,6 @@ let sample_interval = 5; // time interval
 let startingTime = null;
 let stockTicker = [];
 let stock_activity_date = null;
-// let start_time = null;
 let real_date_time = null;
 let time_series = null;
 let series_status = '1D';
@@ -47,41 +46,30 @@ $( function() {
 
       function removePressedClass() {
         if (lastpressed != null) {
-          // $(lastpressed).removeClass("pressed").addClass("btn");
-          // $(lastpressed).classList.toggle('pressed');
           $(lastpressed).removeClass("pressed");
         }
       }
 
-      // // set the on-form-submit event to collect stock information
-      // var form = document.querySelector("#stock-tasks");
-      // form.onsubmit = (function () {
       //
-      //   fetchDefaultData(); // this functions sets up the defaul (1 day) parameters
-      //
-      //   findStockInfo();
-      // });
-
+      // this function makes ajax calls to request stock data of
+      // selected company. in addition, it calls another function
+      // to make ajax call to get company metadata.
       function getStockMarketData(market_url) {
 
         $.getJSON(market_url  , function( data ) {
             findStockData(data);
         });
 
-        // var url = quandl_url + stockTicker[0] + "/metadata.json";
         var url = quandl_url + stockTicker[0] + "/metadata.json?api_key=" + quandl_api;
         if (event.target.id === 'stockSearch') {
-          // console.log("First-request: ");
           console.log(url);
           getStockCompanyInfo(url);
         }
       }
 
       function findCompanyName(d) {
-        // console.log(d)
         var comp_name = $.map(d, function (e) {return e})
         console.log("Company-name 1", comp_name[0]);
-        // console.log("Company-name 2", comp_name[0].name);
 
         var comp = document.getElementById("company-name");
         var name = comp_name[0].name;
@@ -107,33 +95,24 @@ $( function() {
         real_date_time = Object.keys(stock_data[1])[higher_limit]
 
 
-        // start_time = Object.keys(stock_data[1])[higher_limit].split(" ")[1]
         var comp = document.getElementById("company-ticker");
         comp.innerHTML = stock_data[0]["2. Symbol"];
 
         var activity = document.getElementById("activity-date");
         activity.innerHTML = stock_activity_date;
 
-        // $("#company-ticker").append( stock_data[0]["2. Symbol"] )
-        var stockValues = $.map(stock_data[1], function(s) { return s})
-        // console.log("start-time:", start_time);
-        // console.log("Higher Limit: ", higher_limit);
+        var stockValues = $.map(stock_data[1], function(s) { return s});
+
         if (higher_limit === 0) {
           higher_limit = stockValues.length;
         }
-        // console.log("Higher Limit: ", higher_limit);
-        // console.log("Start date: ", Object.keys(stock_data[1])[0]);
-        // console.log("Start date: ", Object.keys(stock_data[1])[higher_limit - 1]);
-        // console.log(stockValues.length);
+
         var sdata = stockValues.reverse();
-        // console.log(sdata);
         return sdata;
       }
 
       function hAxisValues(inc) {
-        // console.log(index, sample_interval);
         if (series_status == '1D') {
-            // start_time = Object.keys(stock_data[1])[higher_limit].split(" ")[1]
 
             var howMany = inc * sample_interval;
             var active_date = new Date(real_date_time);
@@ -146,7 +125,7 @@ $( function() {
             var hr = (hrs >= 12) ? (hrs - 12) : hrs;
             hr = (hr === 0) ? 12 : hr;
             mnts = mnts < 10 ? "0" + mnts : mnts;
-            // var stime = hr + ":" + mnts + " " + tday;
+
             return  hr + ":" + mnts + " " + tday;
           } else {
             var active_date = Object.keys(stock_data[1])[higher_limit  - inc];
@@ -159,12 +138,8 @@ $( function() {
             var d = dt.getDay();
             var day = weekDays[d];
 
-            // console.log("Day is ", day);
-            // console.log("Month is :", date);
-            // var days = active_date.getDate();
             // active_date.setDate(active_date.getDate() + inc)
             // var stime = inc;
-            // console.log(active_date);
             if (series_status == '5M' || series_status == 'YTD' || series_status == '1Y' || series_status == '5Y') {
                 return date;
             }
@@ -208,7 +183,6 @@ $( function() {
 
         function drawBackgroundColor() {
             var data = new google.visualization.DataTable();
-            // data.addColumn('string', 'stock ');
             data.addColumn('string', 'stock ');
             data.addColumn('number', 'Stock Value');
             // data.addColumn('number', 'Volume Data');
@@ -238,7 +212,6 @@ $( function() {
               },
               backgroundColor: '#fde6de',
               chartArea:{left:60,top:20,width:'90%',height:'82%'},
-              // crosshair: { focused: { color: '#3bc', opacity: 0.0 } }
             };
 
             var chart = new google.visualization.AreaChart(document.getElementById('chart_div'));
@@ -279,7 +252,6 @@ $( function() {
 
           console.log(formatted);
           getStockMarketData(formatted);
-
     }
 
 
@@ -291,8 +263,6 @@ $( function() {
 
       var enteredTicker =  $("#stock-ticker").val();
       stockTicker = enteredTicker.toUpperCase().split(",");
-
-      // stockTicker = tickers;
 
       var companyStock = {
         name : stockTicker[0]
@@ -314,8 +284,6 @@ $( function() {
         removePressedClass(); // if there is a pressed button, set button to default
                               // by removeding 'pressed' class from button
         lastpressed = '#' + event.target.id;
-        // $(lastpressed).removeClass("btn").addClass("pressed");
-        // $(lastpressed).classList.toggle('pressed');
         $(lastpressed).addClass("pressed");
 
         findStockInfo();
@@ -331,8 +299,6 @@ $( function() {
         removePressedClass(); // if there is a pressed button, set button to default
                               // by removeding 'pressed' class from button
         lastpressed = '#' + event.target.id;
-        // $(lastpressed).removeClass("btn").addClass("pressed");
-        // $(lastpressed).classList.toggle('pressed');
         $(lastpressed).addClass("pressed");
 
         findStockInfo();
@@ -348,8 +314,6 @@ $( function() {
         removePressedClass(); // if there is a pressed button, set button to default
                               // by removeding 'pressed' class from button
         lastpressed = '#' + event.target.id;
-        // $(lastpressed).removeClass("btn").addClass("pressed");
-        // $(lastpressed).classList.toggle('pressed');
         $(lastpressed).addClass("pressed");
 
         findStockInfo();
@@ -365,8 +329,6 @@ $( function() {
         removePressedClass(); // if there is a pressed button, set button to default
                               // by removeding 'pressed' class from button
         lastpressed = '#' + event.target.id;
-        // $(lastpressed).removeClass("btn").addClass("pressed");
-        // $(lastpressed).classList.toggle('pressed');
         $(lastpressed).addClass("pressed");
 
         findStockInfo();
@@ -387,8 +349,6 @@ $( function() {
           return [d.getUTCFullYear(), weekNo];
       }
 
-      // var result = getWeekNumber(new Date());
-
 
     $("#BtnYTD").click( function () {
         time_series ="TIME_SERIES_DAILY";
@@ -399,8 +359,6 @@ $( function() {
         removePressedClass(); // if there is a pressed button, set button to default
                               // by removeding 'pressed' class from button
         lastpressed = '#' + event.target.id;
-        // $(lastpressed).removeClass("btn").addClass("pressed");
-        // $(lastpressed).classList.toggle('pressed');
         $(lastpressed).addClass("pressed");
 
         findStockInfo();
@@ -414,8 +372,6 @@ $( function() {
         removePressedClass(); // if there is a pressed button, set button to default
                               // by removeding 'pressed' class from button
         lastpressed = '#' + event.target.id;
-        // $(lastpressed).removeClass("btn").addClass("pressed");
-        // $(lastpressed).classList.toggle('pressed');
         $(lastpressed).addClass("pressed");
 
         findStockInfo();
@@ -430,11 +386,8 @@ $( function() {
         removePressedClass(); // if there is a pressed button, set button to default
                               // by removeding 'pressed' class from button
         lastpressed = '#' + event.target.id;
-        // $(lastpressed).removeClass("btn").addClass("pressed");
-        // $(lastpressed).classList.toggle('pressed');
         $(lastpressed).addClass("pressed");
 
-        // highlightButton(6);
         findStockInfo();
     });
   });
